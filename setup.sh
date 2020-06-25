@@ -61,6 +61,7 @@ _config() {
     [[ $SET_DEBUG == 1 ]] && _set_debug "$@"
     SHELL_BIN="${SHELL##*/}" && export SHELL_BIN
 
+    #TODO - check for $1 repo name, etc
     repo_path=$PWD
     repo_name=${PWD##*/}
     dprintf "\$repo_path = $repo_path"

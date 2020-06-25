@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-""" AutoSys Package Metadata
+""" Template Package Metadata
     ---
     Part of the [AutoSys][1] package
 
@@ -13,23 +13,36 @@
     [3]: https://opensource.org/licenses/MIT
     """
 
-from setup import pip_safe_name, readme
+from setup import pip_safe_name, get_file_contents, table_print
 
 from typing import Dict, List, Tuple
 
-__version__: str = '0.4.4'
+module_name: str = 'template_test'
+__version__: str = '0.0.1'
 
+# *<@repl_tags>************************** replacement tags info
+twitter_username: str = 'skeptycal'
+github_username: str = 'skeptycal'
+default_jekyll_theme: str = 'minima'
+py_version: str = '3.8'
+py_versions_tested: str = '6,7,8,9'
+copyright_start: int = '2018'
+copyright_end: int = '2020'
+# *<@repl_tags>************************** replacement tags info
 
-NAME: str = pip_safe_name("AutoSys")
+# *<@package_metadata>******************* setuptools info
 
-VERSION: str = __version__  # "0.4.4"
+# make the name safe for Pypi.org upload
+NAME: str = pip_safe_name(module_name)
+
+VERSION: str = __version__
 VERSION_INFO: Tuple[int] = VERSION.split(".")
 DESCRIPTION: str = "System utilities for Python on macOS."
 REQUIRES_PYTHON: str = ">=3.8.0"
 PACKAGE_DIR: Dict = {'': f'{NAME}'}
 PACKAGE_EXCLUDE: List[str] = ['*test*', '*bak*']
 LICENSE: str = "MIT"
-LONG_DESCRIPTION: str = readme()
+LONG_DESCRIPTION: str = get_file_contents()
 LONG_DESCRIPTION_CONTENT_TYPE: str = "text/markdown"
 # LONG_DESCRIPTION_CONTENT_TYPE="text/x-rst",
 AUTHOR: str = "Michael Treanor"
@@ -129,3 +142,4 @@ CLASSIFIERS: List = [
     "Topic :: Software Development :: Testing",
     "Topic :: Utilities",
 ]
+# *<@package_metadata>******************* setuptools info

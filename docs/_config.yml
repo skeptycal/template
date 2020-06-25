@@ -21,17 +21,17 @@
 # You can create any custom variable you would like, and they will be
 # accessible in the templates via {{ site.myvariable }}.
 
-title: AutoSys
-email: skeptycal@gmail.com
+title: <repo_name>
+email: <author_email>
 description: >- # this means to ignore newlines until "baseurl:"
-    Tricky and fun utilities for python programs on macOS.
+    <description>
 baseurl: '' # the subpath of your site, e.g. /blog
-url: 'https://skeptycal.github.io' # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: skeptycal
-github_username: skeptycal
+url: '<doc_url>' # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: <twitter_username>
+github_username: <github_username>
 
 # Build settings
-theme: minima
+theme: <default_jekyll_theme>
 plugins:
     - jekyll-feed
 # Exclude from processing.
