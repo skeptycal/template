@@ -21,7 +21,7 @@
 -   Xcode
 -   [VSCode][get-code] IDE (or whatever you prefer)
 -   [Sarah Drasner][sdras]'s Vue VSCode [Extension Pack][sdras-pack]
--   [Don Jayamanne][donj]'s Python [Extension Pack][djay-pack]
+-   [Don Jayamanne][djay]'s Python [Extension Pack][djay-pack]
 -   GNU coreutils for macOS (brew install coreutils)
 
 These are basic utilities that anyone developing on macOS would probably use or like to learn about. Add these if you don't have them.
@@ -34,7 +34,7 @@ These are basic utilities that anyone developing on macOS would probably use or 
 brew install git hub gpg python poetry pre-commit
 ```
 
-After that, you can add any source files to your ~/bin directory by using `binit` to link and rename them.
+After that, you can add any source files to your ~/bin directory by using the `binit` utility to link and rename them.
 
 ---
 
@@ -75,17 +75,16 @@ I have included a list of steps used to create this environment from scratch so 
     alias py='python3 -m ' >~/.zshrc
     # default bash shell (before macOS Catalina)
     alias py='python3 -m ' >~/.bashprofile
+
     # create a new venv
-    alias pyv='python3 -m venv venv'
+    alias pyv='python3 -m venv .venv'
     # activate venv for this repo
     alias sba='source bin/activate'
+
     # setup dependencies and metadata with poetry
     alias p='poetry '
     # issue pre-commit commands
     alias pc='pre-commit'
-
-    # a longer function to process minor repo changes
-    gitit() { ... stuff ... } # see below
     ```
 
     So to setup my environment, I use:
@@ -102,12 +101,18 @@ I have included a list of steps used to create this environment from scratch so 
 
     # this is the recommended way for python 3.6+
     # older versions used pyenv or virtualenv
-    python3 -m venv venv
+    python3 -m venv .venv
+
     # activate current virtal environment
     source bin/activate # i use zsh ... others may vary here
+
+    # install dev requirements
+    poetry install
     ```
 
-    > I always use the same name for my virtual environment so all my scripts work in any location. If you prefer different names for each one, there is an environment variable that is set whenever a virtual environment is active:
+    > I always use the same name for my virtual environment so all my scripts work in any location.
+
+    > If you prefer different names for each one, there is an environment variable that is set whenever a virtual environment is active.
 
 ## Feedback
 
