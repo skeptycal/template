@@ -1,3 +1,9 @@
+autopep8
+black
 covdefaults
 coverage
+flake8
 pytest
+pytest-cov
+tox
+tox-travis

@@ -1,10 +1,11 @@
-# <repo_name> Changelog
+# template Changelog
 
 ## UNRELEASED
+
 -   Initial Testing
 
-## <repo_name> 0.0.1
+## template 0.0.1
 
 -   Initial upload
--   Developed on Python <py_version>
+-   Developed on Python 3.8
 -   Dev Release. Not Stable

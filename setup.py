@@ -77,8 +77,6 @@ if True:
     if HERE not in PYTHONPATH:
         PYTHONPATH.insert(0, HERE)
 
-
-
     LOG_FORMAT: str = '{time:YYYY-MM-DD at HH:mm:ss} | {level} | {message}'
     # choose a common location if you consolidate logs
     LOG_LOCATION: str = f'{HERE}/logs/'
