@@ -6,32 +6,23 @@
 
 [![test coverage](https://img.shields.io/badge/test_coverage-100%25-6600CC.svg?logo=Coveralls&color=3F5767)](https://coveralls.io) [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/3454/badge)](https://bestpractices.coreinfrastructure.org/projects/3454)
 
-
 ## Project template setup for python / javascript setup on a MacBook Pro using Big Sur, Zsh, and Python 3.9
 
-
 [![macOS Version](https://img.shields.io/badge/macOS-10.16%20BigSur-blue?logo=apple)](https://www.apple.com) [![GitHub Pipenv locked Python version](https://img.shields.io/badge/Python-3.9-yellow?color=3776AB&logo=python&logoColor=yellow)](https://www.python.org/) [![nuxt.js](https://img.shields.io/badge/nuxt.js-2.14.0-35495e?logo=nuxt.js)](https://nuxtjs.org/)
-
-## System setup for MacBook Pro using Mojave, Bash, and Python Development
-
-This is my software development setup for a MacBook Pro (mid-2015, 16g ram, 256g SSD). It is the setup I currently use and may change frequently. I am a dabbler in many arts ... and far from expert in most areas. Take it for what it is worth to you.
 
 **Please feel free to offer suggestions and changes** (contribution instructions below). I have been coding for many years, but mostly as a side activity ... as a tool to assist me in other endeavors ... so I have not had the 'hard time' invested of constant coding that many of you have.
 
 > Copyright © 2018-2019 [Michael Treanor](https:/skeptycal.github.com)
 
-> Many original settings © 2018 [Mathias Bynens](https://mathiasbynens.be/)
-
 > [MIT License](https://opensource.org/licenses/MIT) - enjoy ...
-
 
 ### Prerequisites
 
-- Xcode
-- [VSCode][get-code] IDE (or whatever you prefer)
-- [Sarah Drasner][sdras]'s Vue VSCode [Extension Pack][sdras-pack]
-- [Don Jayamanne][donj]'s Python [Extension Pack][djay-pack]
-- GNU coreutils for macOS (brew install coreutils)
+-   Xcode
+-   [VSCode][get-code] IDE (or whatever you prefer)
+-   [Sarah Drasner][sdras]'s Vue VSCode [Extension Pack][sdras-pack]
+-   [Don Jayamanne][donj]'s Python [Extension Pack][djay-pack]
+-   GNU coreutils for macOS (brew install coreutils)
 
 These are basic utilities that anyone developing on macOS would probably use or like to learn about. Add these if you don't have them.
 
@@ -47,7 +38,6 @@ After that, you can add any source files to your ~/bin directory by using `binit
 
 ---
 
-
 ## Installation
 
 ### Repo Setup
@@ -55,6 +45,7 @@ After that, you can add any source files to your ~/bin directory by using `binit
 I use python quite a bit and throw in a bit of flask and Vue / Nuxt. The python ecosystem has a very fiddly system to isoloate the coding environment for each project. There are many [options available](), but as of now I have found that this works best for my situation:
 
 You can clone this GitHub repository as a starting point:
+
 ```sh
 git clone https://github.com/skeptycal/user_bin_dir_repo.git && cd user_bin_dir_repo && translate_template.sh
 ```
@@ -67,15 +58,15 @@ This will automate most of the naming and prepping.
 
 I have included a list of steps used to create this environment from scratch so anyone can modify the process to their needs:
 
-1. **Pick a repo name:** This name is used in **MANY LOCATIONS** so choose one
-   you like a lot. I do not provide a way to automate changeing the name.
-   For this example, I'm using ***MasterBlaster*** for the name.
+1.  **Pick a repo name:** This name is used in **MANY LOCATIONS** so choose one
+    you like a lot. I do not provide a way to automate changeing the name.
+    For this example, I'm using **_MasterBlaster_** for the name.
 
-2. **Location:** Make a directory and change to that directory:
+2.  **Location:** Make a directory and change to that directory:
 
         mkdir MasterBlaster && cd MasterBlaster
 
-3. **Virtual Environment:** create a python environment:
+3.  **Virtual Environment:** create a python environment:
 
     (I use python3.x (latest) and I have several aliases setup for that)
 
@@ -96,6 +87,7 @@ I have included a list of steps used to create this environment from scratch so 
     # a longer function to process minor repo changes
     gitit() { ... stuff ... } # see below
     ```
+
     So to setup my environment, I use:
 
     ```sh
@@ -115,8 +107,7 @@ I have included a list of steps used to create this environment from scratch so 
     source bin/activate # i use zsh ... others may vary here
     ```
 
-    >I always use the same name for my virtual environment so all my scripts work in any location. If you prefer different names for each one, there is an environment variable that is set whenever a virtual environment is active:
-
+    > I always use the same name for my virtual environment so all my scripts work in any location. If you prefer different names for each one, there is an environment variable that is set whenever a virtual environment is active:
 
 ## Feedback
 
@@ -128,7 +119,7 @@ Suggestions/improvements are [welcome][repo-issues]!
 
 ## Author
 
-[![twitter/skeptycal](https://s.gravatar.com/avatar/b939916e40df04f870b03e0b5cff4807?s=80)](http://twitter.com/skeptycal "Follow @skeptycal on Twitter")
+[![twitter/skeptycal](https://s.gravatar.com/avatar/b939916e40df04f870b03e0b5cff4807?s=80)](http://twitter.com/skeptycal 'Follow @skeptycal on Twitter')
 
 [**Michael Treanor**][me]
 
@@ -136,20 +127,13 @@ Suggestions/improvements are [welcome][repo-issues]!
 
 [repo-issues]: (https://github.com/skeptycal/dotfiles/issues)
 [repo-fork]: (https://github.com/skeptycal/dotfiles/fork)
-
-
-
 [me]: (https://www.skeptycal.com)
 [skep-image]: (https://s.gravatar.com/avatar/b939916e40df04f870b03e0b5cff4807?s=80)
 [skep-twitter]: (http://twitter.com/skeptycal)
 [skep-mit]: (https://skeptycal.mit-license.org/1976/)
-
-
 [mb]: (https://mathiasbynens.be/)
 [sdras]: (https://sarahdrasnerdesign.com/)
 [djay]: (https://github.com/DonJayamanne)
-
-
 [get-code]: (https://code.visualstudio.com/download)
 [brew]: (https://brew.sh/)
 [djay-pack]: (https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack)
