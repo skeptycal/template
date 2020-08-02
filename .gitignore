@@ -95,22 +95,15 @@ TODO.md
 **/*wakatime*
 **/bak/
 **/config.json
-**/config.json
 **/config.py
 **/crypto.*
-**/database_connect.py
 **/database_connect.py
 **/goobook_client_secret.json
 **/multi_db_connect.py
 **/pass
 **/phive.phar.asc
 **/sftp.json
-**/sftp.json
-**/temp/
-*/*private
-*/*Private*
 */crypto.*
-*/private/*
 
 #######################################################
 ##### DEFAULT DEV .gitignore   @ sortit: nosort, nodupes
@@ -123,8 +116,6 @@ TODO.md
 /public/hot/
 /public/storage/
 /.env/
-
-
 
 #######################################  @sortit: sort_alpha, nodupes
 !**/[Pp]ackages/build/
@@ -1206,7 +1197,6 @@ target/
 target_wrapper.*
 temp/
 Temporary Items
-test/
 testem.log
 Testing
 TestResult.xml
