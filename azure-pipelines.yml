@@ -1,0 +1,24 @@
+trigger:
+    branches:
+        include: [master, test-me-*]
+    tags:
+        include: ['*']
+
+resources:
+    repositories:
+        - repository: skeptycal
+          type: github
+          endpoint: github
+          name: skeptycal/azure-pipeline-templates
+          ref: refs/tags/v1.0.0
+
+jobs:
+    - template: job--pre-commit.yml@skeptycal
+    - template: job--python-tox.yml@skeptycal
+      parameters:
+          toxenvs: [py38]
+          os: windows
+    - template: job--python-tox.yml@skeptycal
+      parameters:
+          toxenvs: [pypy3, py36, py37, py38]
+          os: linux
