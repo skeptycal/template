@@ -5,8 +5,6 @@
     # shellcheck disable=2178,2128,2206,2034
 
     # profile start time
-    YEAR=$(date "+%Y")
-    export YEAR
     t0=$(date "+%s.%n")
 
     # ssm - standard script modules
@@ -17,8 +15,9 @@
 #? ${VAR##*/}        - return only final element in path (program name)
 #? ${VAR%/*}         - return only path elements in path (without program name)
 
+export YEAR=$(date "+%Y")
 
-dprintf() {
+db() {
     printf '%b' "$WARN"
     if [ -n "$1" ]; then
         printf ' -> %s' "$1"
@@ -29,16 +28,13 @@ dprintf() {
     done
     printf '%s\n' ''
     }
-_set_debug() {
-    dprintf "SET_DEBUG =" "$SET_DEBUG" "Verbose debug mode enabled..."
-    # setopt xtrace # verbose
-    }
+
 _end_timer() {
     # profile end time
     t1=$(date "+%s.%n")
     # display script time
     dt=$((t1-t0))
-    printf '\n%bScript %s took %.3f seconds to load.\n\n' "$GO" "$0" "$dt"
+    db '\n%bScript %s took %.3f seconds to load.\n\n' "$GO" "$0" "$dt"
     }
 
 _get_repo_template() {
