@@ -4,22 +4,19 @@
     # shellcheck source=/dev/null
     # shellcheck disable=2178,2128,2206,2034
 
-# ssm - standard script modules
-. "$(command -v ssm)"
+    # profile start time
+    YEAR=$(date "+%Y")
+    export YEAR
+    t0=$(date "+%s.%n")
+
+    # ssm - standard script modules
+    . "$(command -v ssm)"
 #* ##############################################################################
 #? ${PATH//:/\\n}    - replace all colons with newlines to display as a list
 #? ${PATH// /}       - strip all spaces
 #? ${VAR##*/}        - return only final element in path (program name)
 #? ${VAR%/*}         - return only path elements in path (without program name)
 
-# profile start time
-YEAR=$(date "+%Y")
-export YEAR
-t0=$(date "+%s.%n")
-
-REPO_TEMPLATE_LOCATION=~/Documents/coding/template
-
-DEFAULT_REPO_FILE_LIST=( .editorconfig .pre-commit-config.yaml AUTHORS CHANGELOG.md CODE_OF_CONDUCT.md LICENSE azure-pipelines.yml conftest.py pytest.ini requirements-dev.txt setup.py setup.sh tox.ini toxcov.ini README.md .gitignore pyproject.toml )
 
 dprintf() {
     printf '%b' "$WARN"
@@ -32,53 +29,27 @@ dprintf() {
     done
     printf '%s\n' ''
     }
-
-echo() {
-    # more portable 'echo'
-    if [ -n "$1" ]; then
-        printf '%s' "$1"
-        shift
-    fi
-    for arg in "$@"; do
-        printf ' %s' "$arg"
-    done
-    printf '%s\n' ''
+_set_debug() {
+    dprintf "SET_DEBUG =" "$SET_DEBUG" "Verbose debug mode enabled..."
+    # setopt xtrace # verbose
     }
-
-link_tmp_to_repo() {
-    # create files in current directory based on template repo
-    for f in $@; do
-        # copy with hard links as 1st choice
-        # interactice, recursive, verbose
-        cp -irv --link "${REPO_TEMPLATE_LOCATION}/${f}" .
-
-        if [ ! -r $f ]; then # copy with symlinks as 2nd choice
-            # no-clobber, recursive, verbose
-            cp -nrv --symbolic-link "${REPO_TEMPLATE_LOCATION}/${f}" .
-        fi
-
-        if [ ! -r $f ]; then # copy files as 3rd choice
-            # no-clobber, recursive, verbose
-            cp -nrv "${REPO_TEMPLATE_LOCATION}/${f}" .
-        fi
-    done;
-}
-
-send_to_temp() {
-    # update files in template repo based on current directory
-    for f in $@; do
-        # force, recursive, verbose
-        cp -frv "${f}" "${REPO_TEMPLATE_LOCATION}/"
-    done;
-}
+_end_timer() {
+    # profile end time
+    t1=$(date "+%s.%n")
+    # display script time
+    dt=$((t1-t0))
+    printf '\n%bScript %s took %.3f seconds to load.\n\n' "$GO" "$0" "$dt"
+    }
 
 _get_repo_template() {
     #TODO This is a preset template directory - prefer github repo
+    repo_template_location=~/Documents/coding/template
+    repo_file_list=( README.md .gitignore LICENSE MANIFEST.in Pipfile setup.cfg setup.py )
     for f in $repo_file_list; do
         if [ -e "$f" ]; then
             attn "$f already exists in the destination folder."
         else
-            echo "cp -ri" "${REPO_TEMPLATE_LOCATION}/${f}" "$repo_path" #! not activated ... remove <echo> ...
+            echo "cp -ri" "${repo_template_location}/${f}" "$repo_path" #! not activated ... remove <echo> ...
         fi
     done
 

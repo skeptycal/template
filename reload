@@ -1,0 +1,5 @@
+#!/usr/bin/env osascript
+
+tell application "Chrome"
+do JavaScript "window.location.reload()" in current tab of first window
+end tell

@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """ setup_utils Setup
+
+    use `poetry install` instead
     ---
     Part of the [AutoSys][1] package
 
@@ -11,8 +13,10 @@
     [2]: https://www.twitter.com/skeptycal
     [3]: https://opensource.org/licenses/MIT
     """
-    # Note: To use the 'upload' functionality of this file, you must:
-    #   $ pip install twine
+# Note: To use the 'upload' functionality of this file, you must:
+#   $ pip install twine
+
+
 
 # ? ################################### Default Metadata
 NAME: str = 'AutoSys'
@@ -44,7 +48,7 @@ if True:
         Union,
     )
 
-    from auto_loguru import logger
+    from autosysloguru import logger
 
     IS_WIN32 = sys.platform == 'win32' or (getattr(os, '_name', False) == 'nt')
 
