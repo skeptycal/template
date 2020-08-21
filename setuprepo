@@ -1,0 +1,92 @@
+#!/usr/bin/env zsh
+
+TEMPLATE_DIR="$HOME/Documents/coding/template"
+echo $TEMPLATE_DIR
+REPO_NAME=''
+REPO_LINK=''
+CLONE_LINK=''
+
+setup_repo(){
+  # create empty repo or git clone https://github.com/<project_name>
+  if [[ $2 = '--clone' ]]; then
+    # format: https://github.com/skeptycal/autosys.git
+    CLONE_LINK="$3"
+    git clone $CLONE_LINK -o upstream
+
+    # simplest way to get the repo root folder name ...
+    # go up one directory, read the most recent directory created, cd back to repo
+    cd ..
+    REPO_NAME=$(ls -Adrt */ | tail -n 1)
+    cd -
+
+    # reference: https://git-scm.com/docs/git-clone
+    git fetch
+    git pull
+  else
+    REPO_NAME="$1"
+    mkdir -p $REPO_NAME/$REPO_NAME && cd $REPO_NAME
+    git init
+  fi
+  echo "Repo Name: $REPO_NAME"
+
+  # create github repo on *my* github account - ssh login probably required
+  #   should (correctly) fail if repo was cloned from user's GitHub account,
+  #   but could fail if a repo with the same name already exists
+  hub create
+
+  # get remote link for origin (get *my* repo instead of cloned repo's link)
+  REPO_LINK=$(grv | grep 'origin' | awk '{ print $2; }' | tail -n 1)
+}
+setup_python(){
+  # setup python3 virtual environment (using default python3)
+  python3 -m venv .venv
+  # activate python3 virtual environment
+  source .venv/bin/activate
+
+  # upgrade pip3
+  pip3 install --upgrade pip
+  pip3 install wheel
+
+  # install dev tools
+  python3 -m pip install black pytest pylint
+}
+setup_files(){
+  touch LICENSE
+  touch CHANGES.rst
+  touch CODE_OF_CONDUCT.md
+  touch Dockerfile
+  touch LICENSE
+  touch MANIFEST.in
+  touch README.md
+  touch TODO.md
+  touch setup.cfg
+  touch setup.py
+  touch tox.ini
+
+  mkdir docs
+  echo "theme: jekyll-theme-minimal%" >docs/_config.yml
+
+
+  git init
+  git add --all
+  git commit -m 'Initial Commit'
+
+  git push --set-upstream origin $(git_current_branch)
+}
+
+
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 (REPO_NAME | --clone GITHUB_REPO_LINK)"
+else
+
+  setup_repo "$@" # -> REPO_NAME is set
+  setup_python
+  setup_files $REPO_NAME
+# origin	git@github.com:skeptycal/temp.git
+  # if using npm with package.lock
+  # npm ci
+
+  # vscode setup for python
+  # npx gulp installPythonLibs
+fi

@@ -6,6 +6,8 @@ TODO.md
 **/py_template
 **/data
 .gitignore2
+.gitignore2
+.gitignore2
 
 # large files
 **/*/go/*

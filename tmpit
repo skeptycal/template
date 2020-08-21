@@ -1,20 +1,14 @@
-#!/usr/bin/env zsh
-# -*- coding: utf-8 -*-
-    # shellcheck shell=bash
-    # shellcheck source=/dev/null
-    # shellcheck disable=2178,2128,2206,2034
+#!/usr/bin/env python3
 
-    # profile start time
-    t0=$(date "+%s.%n")
+# from datetime import datetime as dt
+from math import factorial as f
+from time import time
 
-    # ssm - standard script modules
-    . "$(command -v ssm)"
-#* ##############################################################################
-#? ${PATH//:/\\n}    - replace all colons with newlines to display as a list
-#? ${PATH// /}       - strip all spaces
-#? ${VAR##*/}        - return only final element in path (program name)
-#? ${VAR%/*}         - return only path elements in path (without program name)
+from typing import List
+from dataclasses import dataclass
 
+
+"""
 export YEAR=$(date "+%Y")
 
 db() {
@@ -37,6 +31,9 @@ _end_timer() {
     db '\n%bScript %s took %.3f seconds to load.\n\n' "$GO" "$0" "$dt"
     }
 
+"""
+
+"""
 _get_repo_template() {
     #TODO This is a preset template directory - prefer github repo
     repo_template_location=~/Documents/coding/template
@@ -48,8 +45,9 @@ _get_repo_template() {
             echo "cp -ri" "${repo_template_location}/${f}" "$repo_path" #! not activated ... remove <echo> ...
         fi
     done
+"""
 
-
+"""
     # github repo template
     }
 _config() {
@@ -63,7 +61,24 @@ _config() {
     dprintf "\$repo_path = $repo_path"
     dprintf "\$repo_name = $repo_name"
     }
+"""
+"""
+setup_clean_repo():
+    pass
+    # python3 -m venv .venv
+    # git init
+    # hub create
+    # link static files from template
+    # copy and setup unique files
+    # git add all
+    # pre-commit
+    # git commit
+    # git pull -rebase
+    # git push
+"""
 
+
+"""
 main() {
     SET_DEBUG=1
     br
@@ -82,3 +97,4 @@ main() {
 }
 
 main "$@"
+"""
